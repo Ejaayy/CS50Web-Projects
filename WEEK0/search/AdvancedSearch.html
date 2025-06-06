@@ -13,20 +13,27 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" class="h-24 mb-2" alt="Google Logo" />
         </a>
 
-        <form class="max-w-xl w-full mx-auto mb-6" action="https://google.com/search">
-            <label for="default-search" class="sr-only">Search</label>
-            <div class="relative">
-                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                    </svg>
+        <form method="GET" action="https://www.google.com/search">
+            <div class="grid gap-6 mb-6 md:grid-cols-2">
+                <div>
+                    <label for="as_q" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Find pages with… “all these words:”</label>
+                    <input type="text" id="as_q" name="as_q" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Type here" required />
                 </div>
-                <input type="search" id="default-search" name="q"
-                    class="w-full h-12 pl-10 text-white text-lg bg-gray-800 border border-gray-600 rounded-full 
-                    placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Search" required />
+                <div>
+                    <label for="as_epq" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Find pages with… “this exact word or phrase:”</label>
+                    <input type="text" id="as_epq" name = "as_epq" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Type here" required />
+                </div>
+                <div>
+                    <label for="as_oq" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Find pages with… “any of these words:”</label>
+                    <input type="text" id="as_oq" name = "as_oq"class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Type here" required />
+                </div>  
+                <div>
+                    <label for="as_eq" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Find pages with… “none of these words:”</label>
+                    <input type="tel" id="as_eq" name = "as_eq" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
+                    block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Type here" required />
+                </div>
             </div>
+            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
         </form>
 
         <ul class="flex flex-col md:flex-row md:space-x-8 mt-0 font-medium text-white">
