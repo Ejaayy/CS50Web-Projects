@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("ej", views.ej, name = "ej")
+    path("ej", views.ej, name = "ej"), #opens the function inside views like methods
+    path("rain", views.rain, name = "rain")
 ]

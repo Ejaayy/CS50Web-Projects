@@ -7,3 +7,6 @@ def index(request):
 
 def ej(request):
     return HttpResponse("Hello EJ!")
+
+def rain(request):
+    return HttpResponse("Hello Rain!")
