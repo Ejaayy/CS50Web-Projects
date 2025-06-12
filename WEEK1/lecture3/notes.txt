@@ -1,0 +1,105 @@
+lecture3/               ← 🟦 This is your **project root folder**
+├── manage.py           ← 🎮 Command center: runs server, migrations, etc.
+├── db.sqlite3          ← 📦 Your default database (optional right now)
+├── hello/              ← 🧩 This is a **Django app**
+│   └── (views, models, urls, templates, etc.)
+├── newyear/            ← 🧩 Another **Django app**
+│   └── (same as above)
+└── lecture3/           ← 🔧 This is your **Django project configuration**
+    ├── __init__.py     ← (Python package indicator)
+    ├── settings.py     ← 🧠 All project-level settings (debug, db, apps)
+    ├── urls.py         ← 🌐 The main URL router
+    └── wsgi.py/asgi.py ← Deployment config
+
+===============================
+🧠 DJANGO NEW APP CHEAT SHEET
+===============================
+
+✅ 1. Create a new app
+-----------------------
+Run this in your terminal:
+    python manage.py startapp yourappname
+
+✅ 2. Add your app to settings.py
+----------------------------------
+Open yourproject/settings.py
+Find INSTALLED_APPS list and add your app:
+    INSTALLED_APPS = [
+        ...,
+        'yourappname',
+    ]
+
+✅ 3. Create urls.py in your app (if not yet made)
+---------------------------------------------------
+Inside yourappname/, create a file named urls.py
+
+Paste this:
+-----------------------------------
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("", views.index, name="index"),
+]
+-----------------------------------
+
+✅ 4. Make a view function
+--------------------------
+Inside yourappname/views.py, define a view:
+
+    from django.http import HttpResponse
+
+    def index(request):
+        return HttpResponse("Hello from yourappname!")
+
+✅ 5. Include app’s URL in main urls.py
+----------------------------------------
+Open yourproject/urls.py (ex: lecture3/urls.py)
+
+Import include:
+    from django.urls import path, include
+
+Add a new path:
+    urlpatterns = [
+        path("yourappname/", include("yourappname.urls")),
+        # existing paths...
+    ]
+
+✅ 6. Run server and test
+--------------------------
+    python manage.py runserver
+Then go to:
+    http://127.0.0.1:8000/yourappname/
+
+✅ 7. (Optional) If using templates, create this:
+-------------------------------------------------
+yourappname/
+└── templates/
+    └── yourappname/
+        └── index.html
+
+In views.py:
+    from django.shortcuts import render
+
+    def index(request):
+        return render(request, "yourappname/index.html")
+
+Make sure 'DIRS' in TEMPLATES setting in settings.py is correct:
+    'DIRS': [BASE_DIR / "templates"],
+
+OR just put templates in the app folder like above and Django will find it.
+
+✅ 8. Apply migrations (for database stuff)
+--------------------------------------------
+Only needed if you change models.py:
+
+    python manage.py makemigrations
+    python manage.py migrate
+
+✅ 9. Common mistakes to watch out for
+---------------------------------------
+☑️ Forgot to add app to INSTALLED_APPS
+☑️ Typo in app name in path/include
+☑️ No urls.py in your app
+☑️ Wrong import paths (check spelling and case!)
+☑️ Missing view function or template
